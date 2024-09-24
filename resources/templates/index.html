@@ -6,6 +6,9 @@
 <title>Portal de Pacientes</title>
 <link rel="stylesheet" href="../static/css/tailwind.min.css">
 <link rel="stylesheet" href="../static/css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 </head>
 <body>
 	<div class="container mx-auto text-center mt-10">
@@ -28,19 +31,19 @@
 					<th class="py-2 px-4">Acciones</th>
 				</tr>
 				<tr>
-					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center" placeholder="ID"</th>
-					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center" placeholder="Nombre"</th>
-					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center" placeholder="Nacimiento"</th>
+					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center"</th>
+					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center"</th>
+					<th class="py-2 px-4"><input type="text" id="datepicker" class="w-full px-2 border-2 rounded-md text-black text-center"</th>
 					<th class="py-2 px-4">
 						<select type="text" class="py-1 px-2 w-full rounded-md text-black text-center">
 							<option value=""></option>
-							<option value="Masculino">M</option>
-							<option value="Femenino">F</option>
+							<option value="Masculino" class="px-2 py-1 rounded-lg">M</option>
+							<option value="Femenino" class="px-2 py-1 rounded-lg">F</option>
 						</select></th>
-					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center" placeholder="Modalidad"</th>
-					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center" placeholder="Estudio"</th>
-					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center" placeholder="Fecha"</th>
-					<th class="py-2 px-4"></th>
+					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center"</th>
+					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center"</th>
+					<th class="py-2 px-4"><input type="text" id="datepicker" class="w-full px-2 border-2 rounded-md text-black text-center"</th>
+					<th class="py-2 px-8"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -53,23 +56,23 @@
 					<td class="py-2 px-4" th:text="${study.studydescription}">Estudio</td>
 					<td class="py-2 px-4" th:text="${study.studydate}">Fecha</td>
 					<td class="py-2 px-4 btn">
-						<a class="text-blue-500 hover:underline" th:href="@{'/edit/' + ${study.id}}">
+						<a class="text-blue-500 hover:underline px-2" th:href="@{'/edit/' + ${study.id}}">
 							<img src="/static/src/inmigracion.png" alt="Reporte" title="Reporte">
 						</a>
 						&nbsp;&nbsp;&nbsp; 
-						<a class="text-green-500 hover:underline" th:href="@{${study.studyurl}}" target="_blank" rel="noopener noreferrer">
+						<a class="text-green-500 hover:underline px-2" th:href="@{${study.studyurl}}" target="_blank" rel="noopener noreferrer">
 							<img src="/static/src/radiografia (2).png" alt="Estudio" title="Estudio">
 						</a>
 						&nbsp;&nbsp;&nbsp; 
-						<a class="text-orange-500 hover:underline" th:href="@{'/email/' + ${study.id}}">
+						<a class="text-orange-500 hover:underline px-2" th:href="@{'/email/' + ${study.id}}">
 							<img src="/static/src/correo-electronico.png" alt="Correo" title="Reporte">
 						</a>
 						&nbsp;&nbsp;&nbsp; 
-						<a class="text-purple-500 hover:underline" th:href="@{'/report/' + ${study.id}}" target="_blank" rel="noopener noreferrer">
+						<a class="text-purple-500 hover:underline px-2" th:href="@{'/report/' + ${study.id}}" target="_blank" rel="noopener noreferrer">
 							<img src="/static/src/impresora.png" alt="Imprimir" title="Imprimir">
 						</a>
 						&nbsp;&nbsp;&nbsp;
-						<a class="text-red-500 hover:underline" th:href="@{'/report/' + ${study.id}}" target="_blank" rel="noopener noreferrer">
+						<a class="text-red-500 hover:underline  px-2 px-2" th:href="@{'/report/' + ${study.id}}" target="_blank" rel="noopener noreferrer">
 							<img src="/static/src/url.png" alt="URL" title="URL">
 						</a>
 					</td>
@@ -90,5 +93,6 @@
 			<button type="submit" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">Logout</button>
 		</form>
 	</div>
+	<script src="/static/js/calendario.js"></script>
 </body>
 </html>
