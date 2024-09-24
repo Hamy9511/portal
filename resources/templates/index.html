@@ -27,6 +27,21 @@
 					<th class="py-2 px-4">Fecha</th>
 					<th class="py-2 px-4">Acciones</th>
 				</tr>
+				<tr>
+					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center" placeholder="ID"</th>
+					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center" placeholder="Nombre"</th>
+					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center" placeholder="Nacimiento"</th>
+					<th class="py-2 px-4">
+						<select type="text" class="py-1 px-2 w-full rounded-md text-black text-center">
+							<option value=""></option>
+							<option value="Masculino">M</option>
+							<option value="Femenino">F</option>
+						</select></th>
+					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center" placeholder="Modalidad"</th>
+					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center" placeholder="Estudio"</th>
+					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center" placeholder="Fecha"</th>
+					<th class="py-2 px-4"></th>
+				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="study : ${listStudies}" class="border-b hover:bg-gray-100">
