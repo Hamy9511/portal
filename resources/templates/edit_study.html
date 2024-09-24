@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Edición de Reporte</title>
+    <link rel="stylesheet" href="../static/css/tailwind.min.css">
+<link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/richtext/richtext.min.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script th:src="@{/richtext/jquery.richtext.min.js}"></script>
+</head>
+<body class="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div class="bg-white shadow-md rounded-lg p-6 w-full max-w-2xl">
+        <h1 class="text-2xl font-bold text-center mb-6">Reporte</h1>
+        <form action="#" th:action="@{/report}" th:object="${study}" method="post" class="space-y-6">
+            <div class="flex justify-between items-center">
+                <label class="font-bold">ID:</label>
+                <span th:text="*{patientid}" class="text-gray-700"></span>
+            </div>
+
+            <div class="flex justify-between items-center">
+                <label class="font-bold">Nombre:</label>
+                <span th:text="*{patientname}" class="text-gray-700"></span>
+            </div>
+
+            <div class="flex justify-between items-center">
+                <label class="font-bold">Estudio:</label>
+                <span th:text="*{studydescription}" class="text-gray-700"></span>
+            </div>
+
+            <div>
+                <label class="font-bold">Reporte:</label>
+                <textarea id="message" name="content" th:field="*{studyreport}"
+                          class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+            </div>
+
+            <div class="flex justify-center space-x-4">
+                <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600">Guardar</button>
+                <button type="button" onclick="history.back();" class="bg-gray-500 text-white px-6 py-2 rounded-md hover:bg-gray-600">Cancelar</button>
+            </div>
+
+            <input type="hidden" th:field="*{id}" />
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#message").richText({
+                bold: true,
+                italic: true,
+                underline: true,
+                leftAlign: true,
+                centerAlign: true,
+                rightAlign: true,
+                justify: true,
+                ol: true,
+                ul: true,
+                heading: true,
+                fonts: true,
+                fontList: ["Arial", "Arial Black", "Comic Sans MS", "Courier New", "Geneva", "Georgia", "Helvetica", "Impact", "Lucida Console", "Tahoma", "Times New Roman", "Verdana"],
+                fontColor: true,
+                fontSize: true,
+                undoRedo: true
+            });
+        });
+    </script>
+</body>
+</html>

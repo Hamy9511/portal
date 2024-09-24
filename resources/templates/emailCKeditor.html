@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Envio de Reporte</title>
+    <link rel="stylesheet" href="../static/css/tailwind.min.css">
+	<link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto my-10">
+        <div class="bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto">
+            <h1 class="text-2xl font-bold text-center mb-6">Envio de Reporte</h1>
+            <form class="space-y-6" action="#" th:action="@{/send_email}"
+                th:object="${study}" method="post">
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <label class="font-bold">ID:</label>
+                        <span th:text="*{patientid}"></span>
+                    </div>
+                    <div>
+                        <label class="font-bold">Nombre:</label>
+                        <span th:text="*{patientname}"></span>
+                    </div>
+                    <div>
+                        <label class="font-bold">Estudio:</label>
+                        <span th:text="*{studydescription}"></span>
+                    </div>
+                    <div>
+                        <label class="font-bold">Destinatario:</label>
+                        <input id="email" type="email" th:field="*{studyopt1}"
+                            class="mt-2 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        <p id="result"></p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit"
+                        class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        Enviar
+                    </button>
+                    <button type="button" onclick="history.back();"
+                        class="ml-4 bg-gray-500 text-white px-6 py-2 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                        Cancelar
+                    </button>
+                </div>
+
+                <!-- Hidden Fields -->
+                <input type="text" th:field="*{id}" readonly="readonly" class="hidden" />
+                <input type="text" th:field="*{patientname}" readonly="readonly" class="hidden" />
+                <input type="text" th:field="*{studydescription}" readonly="readonly" class="hidden" />
+                <input type="text" th:field="*{studyurl}" readonly="readonly" class="hidden" />
+
+                <div>
+                    <textarea name="content" id="message" th:field="*{studyreport}"
+                        class="w-full border-gray-300 rounded-md"></textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- CKEditor Scripts -->
+    <script src="//cdn.ckeditor.com/4.15.0/full/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('message', {
+            language: 'es',
+            readOnly: true,
+            allowedContent: true,
+            removeFormatAttributes: '',
+            width: '100%',
+            height: 300,
+            removeButtons: 'Source,Save,NewPage,ExportPdf,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Find,Replace,SelectAll,Form,Checkbox,Radio,TextField,CopyFormatting,RemoveFormat,Italic,Underline,Strike,Subscript,Superscript,Textarea,Select,Button,ImageButton,HiddenField,Blockquote,CreateDiv,Outdent,Indent,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,Language,Link,Image,Flash,Unlink,Anchor,Table,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe,FontSize,Font,Format,Styles,TextColor,ShowBlocks,Maximize,About,BGColor'
+        });
+        CKEDITOR.config.scayt_sLang = 'es_ES';
+        CKEDITOR.config.scayt_autoStartup = true;
+    </script>
+</body>
+</html>

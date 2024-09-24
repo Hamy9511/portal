@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_portal" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c74d08ff-2166-4375-aa71-669b8b8c687a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Portal"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="firma" class="java.lang.String"/>
+	<parameter name="id" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT id, patientid as idpatient, studyreport as report, studytime as datestudy, dateadquired as date, patientname as nombrepaciente, studydescription as proc, EXTRACT(YEAR FROM age(cast(patientdob as date))) as edad FROM public.study where id =  $P{id}]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="idpatient" class="java.lang.String"/>
+	<field name="report" class="java.lang.String"/>
+	<field name="datestudy" class="java.lang.String"/>
+	<field name="date" class="java.sql.Timestamp"/>
+	<field name="nombrepaciente" class="java.lang.String"/>
+	<field name="proc" class="java.lang.String"/>
+	<field name="edad" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="66" splitType="Stretch">
+			<image>
+				<reportElement x="8" y="0" width="60" height="60" uuid="d01bf869-4c0c-4f00-86e0-774fb9c9022d">
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="515" y="-2" width="60" height="60" uuid="625ef8bb-5aa4-47bf-9fcd-168d6a1d8d68"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="69" y="10" width="440" height="40" uuid="69b987c5-583b-432e-bc75-aebe3c9f2c11">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="21" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLINICA DE RADIOLOGIA $F{idpatient}]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="97" splitType="Stretch">
+			<textField>
+				<reportElement x="40" y="1" width="520" height="20" uuid="25a32735-566e-462c-ae62-dc5305a92ff0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ID: " + $F{idpatient}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="40" y="21" width="520" height="20" uuid="6f413c25-2110-414e-8613-57424b0cf6b0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NOMBRE: "+ $F{nombrepaciente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="40" y="41" width="520" height="20" uuid="a5748a4e-e60a-4c5c-af2d-bb9e5ee5cb29"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["EDAD: "+$F{edad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="40" y="62" width="520" height="20" uuid="2a93b3d1-73b8-4d24-93a6-6fa6f58cfcd3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ESTUDIO: "+$F{proc}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="153" splitType="Stretch">
+			<image>
+				<reportElement positionType="FixRelativeToBottom" x="250" y="61" width="90" height="90" uuid="48fcfc0f-8a6f-46c8-aacd-c0c6fb486f74"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement key="" x="40" y="10" width="510" height="40" uuid="9012862b-8f22-46b7-8527-aa24808ad590"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{report}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

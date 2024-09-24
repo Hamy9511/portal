@@ -1,0 +1,84 @@
+body{
+    background-color: rgb(102, 154, 201);
+    display: flex;
+    flex-direction: row;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 30%;
+    background-color: #02B8BF;
+}
+
+.logo {
+    margin-bottom: 100px;
+}
+
+.logo img {
+    height: 130%;
+}
+
+.container--form{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 100px;
+}
+
+.container--form h1{
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 50px;
+}
+
+.container--form--block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container--form--block--user{
+    font-size: 2em;
+    margin-bottom: 50px;
+}
+
+.container--form--block--pass{
+    font-size: 2em;
+    margin-bottom: 50px;
+}
+
+.container--form--block--button{
+    font-size: 2em;
+}
+
+.container--form--block--button button{
+    background-color: #1990CE;
+    transition: background-color 0.3s ease;
+}
+
+.container--form--block--button button:hover{
+    background-color: #07BC83;
+}
+
+.fondo{
+    background-image: url("/src/x-ray-6841384.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+}
+
+@media (max-width: 1800px) {
+
+    .container{
+        width: 50%;
+    }
+}
+
+@media (max-width: 950px){
+}

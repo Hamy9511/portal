@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+	<link rel="stylesheet" href="../static/css/tailwind.min.css">
+	<link rel="stylesheet" href="../static/css/style.css">
+    <title>Envio de Reporte</title>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto my-10">
+        <div class="bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto">
+            <h1 class="text-2xl font-bold text-center mb-6">Envio de Reporte</h1>
+            <form action="#" th:action="@{/send_email}" th:object="${study}" method="post">
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <table class="w-full table-auto border-collapse border border-gray-300">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="p-3 border border-gray-300 text-left font-bold">
+                                        ID:
+                                    </th>
+                                    <th class="p-3 border border-gray-300 text-left">
+                                        <label th:text="*{patientid}"></label>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-3 border border-gray-300 font-bold">Nombre:</td>
+                                    <td class="p-3 border border-gray-300">
+                                        <label th:text="*{patientname}"></label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 border border-gray-300 font-bold">Estudio:</td>
+                                    <td class="p-3 border border-gray-300">
+                                        <label th:text="*{studydescription}"></label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 border border-gray-300 font-bold" colspan="2">Reporte:</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 border border-gray-300" colspan="2">
+                                        <label style="font-weight: normal;" th:utext="*{studyreport}"></label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 border border-gray-300 text-center" colspan="2">
+                                        <div class="mb-4">
+                                            <strong class="font-bold">Destinatario:</strong>
+                                            <input id="email" type="email" th:field="*{studyopt1}" 
+                                                class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                                            <p id="result"></p>
+                                        </div>
+                                        <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600">
+                                            Enviar
+                                        </button>
+                                        <button type="button" onclick="history.back();" class="bg-gray-500 text-white px-6 py-2 ml-4 rounded-md hover:bg-gray-600">
+                                            Cancelar
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Hidden fields -->
+                <input type="text" th:field="*{id}" readonly="readonly" class="hidden" />
+                <input type="text" th:field="*{patientname}" readonly="readonly" class="hidden" />
+                <input type="text" th:field="*{studydescription}" readonly="readonly" class="hidden" />
+                <input type="text" th:field="*{studyurl}" readonly="readonly" class="hidden" />
+                <input type="text" th:field="*{studyreport}" readonly="readonly" class="hidden" />
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Portal de Pacientes</title>
+<link rel="stylesheet" href="../static/css/tailwind.min.css">
+<link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+	<div class="container mx-auto text-center mt-10">
+		<div class="header-title">
+			<img class = "logo" src="../static/src/Logo.jpg">
+		<div class="container-title">
+			<h1 class="text-4xl font-bold mb-6">listado de estudios</h1>
+		</div>
+		</div>
+		<table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden table">
+			<thead class="table-title text-white">
+				<tr>
+					<th class="py-2 px-4">ID</th>
+					<th class="py-2 px-4">Nombre</th>
+					<th class="py-2 px-4">Nacimiento</th>
+					<th class="py-2 px-4">Genero</th>
+					<th class="py-2 px-4">Modalidad</th>
+					<th class="py-2 px-4">Estudio</th>
+					<th class="py-2 px-4">Fecha</th>
+					<th class="py-2 px-4">Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="study : ${listStudies}" class="border-b hover:bg-gray-100">
+					<td class="py-2 px-4" th:text="${study.patientid}">ID</td>
+					<td class="py-2 px-4" th:text="${study.patientname}">Nombre</td>
+					<td class="py-2 px-4" th:text="${study.patientdob}">Nacimiento</td>
+					<td class="py-2 px-4" th:text="${study.patientgender}">Genero</td>
+					<td class="py-2 px-4" th:text="${study.modality}">Modalidad</td>
+					<td class="py-2 px-4" th:text="${study.studydescription}">Estudio</td>
+					<td class="py-2 px-4" th:text="${study.studydate}">Fecha</td>
+					<td class="py-2 px-4 btn">
+						<a class="text-blue-500 hover:underline" th:href="@{'/edit/' + ${study.id}}">
+							<img src="/static/src/inmigracion.png" alt="Reporte" title="Reporte">
+						</a>
+						&nbsp;&nbsp;&nbsp; 
+						<a class="text-green-500 hover:underline" th:href="@{${study.studyurl}}" target="_blank" rel="noopener noreferrer">
+							<img src="/static/src/radiografia (2).png" alt="Estudio" title="Estudio">
+						</a>
+						&nbsp;&nbsp;&nbsp; 
+						<a class="text-orange-500 hover:underline" th:href="@{'/email/' + ${study.id}}">
+							<img src="/static/src/correo-electronico.png" alt="Correo" title="Reporte">
+						</a>
+						&nbsp;&nbsp;&nbsp; 
+						<a class="text-purple-500 hover:underline" th:href="@{'/report/' + ${study.id}}" target="_blank" rel="noopener noreferrer">
+							<img src="/static/src/impresora.png" alt="Imprimir" title="Imprimir">
+						</a>
+						&nbsp;&nbsp;&nbsp;
+						<a class="text-red-500 hover:underline" th:href="@{'/report/' + ${study.id}}" target="_blank" rel="noopener noreferrer">
+							<img src="/static/src/url.png" alt="URL" title="URL">
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="mt-4">
+			<a class="text-blue-600 hover:underline" th:href="@{/export}">Exportar a archivo CSV</a>
+		</div>
+		<div class="mt-4">
+			<h5 class="inline text-gray-700">Usuario: 
+				<span class="font-semibold" th:inline="text">[[${#httpServletRequest.remoteUser}]]</span>
+			</h5>
+		</div>
+
+		<form th:action="@{/logout}" method="post" class="mt-4">
+			<button type="submit" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">Logout</button>
+		</form>
+	</div>
+</body>
+</html>
