@@ -33,7 +33,7 @@
 				<tr>
 					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center"</th>
 					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center"</th>
-					<th class="py-2 px-4"><input type="text" id="datepicker2" class="w-full px-2 border-2 rounded-md text-black text-center"</th>
+					<th class="py-2 px-4"><input type="text" id="datepicker2" pattern="\d{4}-\d{2}-\d{2}" oninput="this.value = this.value.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');"  class="w-full px-2 border-2 rounded-md text-black text-center"</th>
 					<th class="py-2 px-4">
 						<select type="text" class="py-1 px-2 w-full rounded-md text-black text-center">
 							<option value=""></option>
@@ -42,7 +42,7 @@
 						</select></th>
 					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center"</th>
 					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center"</th>
-					<th class="py-2 px-4"><input type="text" id="datepicker" class="w-full px-2 border-2 rounded-md text-black text-center"</th>
+					<th class="py-2 px-4"><input type="text" id="datepicker" pattern="\d{4}-\d{2}-\d{2}" oninput="this.value = this.value.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');" class="w-full px-2 border-2 rounded-md text-black text-center"</th>
 					<th class="py-2 px-8"></th>
 				</tr>
 			</thead>
