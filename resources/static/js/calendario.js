@@ -1,6 +1,5 @@
 flatpickr("#datepicker", {
-    dateFormat: "Ymd",
-    defaultDate: new Date()
+    dateFormat: "Ymd"
 });
 flatpickr("#datepicker2", {
     dateFormat: "Ymd"

@@ -31,19 +31,19 @@
 					<th class="py-2 px-4">Acciones</th>
 				</tr>
 				<tr>
-					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center"</th>
-					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center"</th>
+					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center" id="id-input"></th>
+					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center" id="nombre-input"></th>
 					<th class="py-2 px-4"><input type="text" id="datepicker2" pattern="\d{4}-\d{2}-\d{2}" oninput="this.value = this.value.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');"  class="w-full px-2 border-2 rounded-md text-black text-center"</th>
 					<th class="py-2 px-4">
-						<select type="text" class="py-1 px-2 w-full rounded-md text-black text-center">
+						<select type="text" class="py-1 px-2 w-full rounded-md text-black text-center" id="genero-input">
 							<option value=""></option>
 							<option value="Masculino" class="px-2 py-1 rounded-lg">M</option>
 							<option value="Femenino" class="px-2 py-1 rounded-lg">F</option>
 						</select></th>
-					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center"</th>
-					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center"</th>
-					<th class="py-2 px-4"><input type="text" id="datepicker" pattern="\d{4}-\d{2}-\d{2}" oninput="this.value = this.value.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');" class="w-full px-2 border-2 rounded-md text-black text-center"</th>
-					<th class="py-2 px-8"></th>
+					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center" id="modalidad-input"></th>
+					<th class="py-2 px-4"><input type="text" class="w-full px-2 border-2 rounded-md text-black text-center" id="estudio-input"></th>
+					<th class="py-2 px-4"><input type="text" id="datepicker" pattern="\d{4}-\d{2}-\d{2}" oninput="this.value = this.value.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');" class="w-full px-2 border-2 rounded-md text-black text-center"></th>
+					<th class="py-2 px-8"><button class="rounded-lg px-2 py-1" onclick="clearInputs()">Borrar Filtros</button></th> 
 				</tr>
 			</thead>
 			<tbody>
@@ -94,5 +94,6 @@
 		</form>
 	</div>
 	<script src="/static/js/calendario.js"></script>
+	<script src="/static/js/clearInputs.js"></script> 
 </body>
 </html>
